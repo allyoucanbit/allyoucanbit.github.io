@@ -1,1 +1,1 @@
-loudo.net is still under construction
+this site is under construction
