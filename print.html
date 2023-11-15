@@ -116,10 +116,23 @@ function onDeviceSelected(selected)
 		}
 	}
 }
+
+
+	
 window.onload = setup;
 </script>
 </head>
 <body>
+
+<script type="text/javascript">
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const p_date = urlParams.get('p_date');
+document.write(p_date);
+document.write("<p>");
+
+</script>
 
 <span style="padding-right:50px; font-size:200%">Zebra Browser Print Test Page</span><br/>
 <span style="font-size:75%">This page must be loaded from a web server to function properly.</span><br><br>
