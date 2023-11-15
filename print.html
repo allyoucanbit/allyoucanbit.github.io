@@ -139,7 +139,7 @@ document.write("<p>");
 Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);></select> <!--  <input type="button" value="Change" onclick="changeDevice();">--> <br/><br/> 
 <input type="button" value="Get Application Configuration" onclick="getConfig()"><br/><br/>
 <input type="button" value="Send Config Label" onclick="writeToSelectedPrinter('~wc')"><br/><br/>
-<input type="button" value="Send ZPL Label" onclick="writeToSelectedPrinter('^XA^FO200,200^A0N36,36^FDTest Label^FS^XZ')"><br/><br/>
+<input type="button" value="Send ZPL Label" onclick="writeToSelectedPrinter('^XA^FO0,40^A0N36,36^FDThis is a test print^FS^FO0,0^A0N18,10^FDLine 2^FS^XZ')"><br/><br/>
 <input type="button" value="Get Status" onclick="writeToSelectedPrinter('~hs'); readFromSelectedPrinter()"><br/><br/>
 <input type="button" value="Get Local Devices" onclick="BrowserPrint.getLocalDevices(getDeviceCallback, errorCallback);"><br/><br/>
 <input type="text" name="write_text" id="write_text"><input type="button" value="Write" onclick="writeToSelectedPrinter(document.getElementById('write_text').value)"><br/><br/>
