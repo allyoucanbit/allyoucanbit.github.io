@@ -2,10 +2,33 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <head>
 <script type="text/javascript">
-var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.checkStringArgs=function(e,g,k){if(null==e)throw new TypeError("The 'this' value for String.prototype."+k+" must not be null or undefined");if(g instanceof RegExp)throw new TypeError("First argument to String.prototype."+k+" must not be a regular expression");return e+""};$jscomp.ASSUME_ES5=!1;$jscomp.ASSUME_NO_NATIVE_MAP=!1;$jscomp.ASSUME_NO_NATIVE_SET=!1;
-$jscomp.defineProperty=$jscomp.ASSUME_ES5||"function"==typeof Object.defineProperties?Object.defineProperty:function(e,g,k){e!=Array.prototype&&e!=Object.prototype&&(e[g]=k.value)};$jscomp.getGlobal=function(e){return"undefined"!=typeof window&&window===e?e:"undefined"!=typeof global&&null!=global?global:e};$jscomp.global=$jscomp.getGlobal(this);
-$jscomp.polyfill=function(e,g,k,h){if(g){k=$jscomp.global;e=e.split(".");for(h=0;h<e.length-1;h++){var f=e[h];f in k||(k[f]={});k=k[f]}e=e[e.length-1];h=k[e];g=g(h);g!=h&&null!=g&&$jscomp.defineProperty(k,e,{configurable:!0,writable:!0,value:g})}};
-$jscomp.polyfill("String.prototype.startsWith",function(e){return e?e:function(e,k){var h=$jscomp.checkStringArgs(this,e,"startsWith");e+="";var f=h.length,g=e.length;k=Math.max(0,Math.min(k|0,h.length));for(var q=0;q<g&&k<f;)if(h[k++]!=e[q++])return!1;return q>=g}},"es6","es3");
+	var $jscomp=$jscomp||{};
+	$jscomp.scope={};
+	$jscomp.checkStringArgs=function(e,g,k){
+		if(null==e)throw new TypeError("The 'this' value for String.prototype."+k+" must not be null or undefined");
+		if(g instanceof RegExp)throw new TypeError("First argument to String.prototype."+k+" must not be a regular expression");
+		return e+""
+	};
+	$jscomp.ASSUME_ES5=!1;
+	$jscomp.ASSUME_NO_NATIVE_MAP=!1;
+	$jscomp.ASSUME_NO_NATIVE_SET=!1;
+	$jscomp.defineProperty=$jscomp.ASSUME_ES5||"function"==typeof Object.defineProperties?Object.defineProperty:function(e,g,k){e!=Array.prototype&&e!=Object.prototype&&(e[g]=k.value)};
+	$jscomp.getGlobal=function(e){return"undefined"!=typeof window&&window===e?e:"undefined"!=typeof global&&null!=global?global:e};
+	$jscomp.global=$jscomp.getGlobal(this);
+	$jscomp.polyfill=function(e,g,k,h){
+		if(g){
+			k=$jscomp.global;e=e.split(".");
+			for(h=0;h<e.length-1;h++){
+				var f=e[h];
+				f in k||(k[f]={});
+				k=k[f]}
+			e=e[e.length-1];
+			h=k[e];
+			g=g(h);
+			g!=h&&null!=g&&$jscomp.defineProperty(k,e,{configurable:!0,writable:!0,value:g})
+		}
+	};
+	$jscomp.polyfill("String.prototype.startsWith",function(e){return e?e:function(e,k){var h=$jscomp.checkStringArgs(this,e,"startsWith");e+="";var f=h.length,g=e.length;k=Math.max(0,Math.min(k|0,h.length));for(var q=0;q<g&&k<f;)if(h[k++]!=e[q++])return!1;return q>=g}},"es6","es3");
 var BrowserPrint=function(){function e(a,c){var b=new XMLHttpRequest;"withCredentials"in b?b.open(a,c,!0):"undefined"!=typeof XDomainRequest?(b=new XDomainRequest,b.open(a,c)):b=null;return b}function g(a,c,b,d){void 0!==a&&(void 0===b&&(b=a.sendFinishedCallback),void 0===d&&(d=a.sendErrorCallback));return h(c,b,d)}function k(a,c,b){void 0===c&&(c=f.defaultSuccessCallback);void 0===b&&(b=f.defaultErrorCallback);return h(a,c,b)}function h(a,c,b){a.onreadystatechange=function(){a.readyState===XMLHttpRequest.DONE&&
 200===a.status?""===a.responseType?c(a.responseText):c(a.response):a.readyState===XMLHttpRequest.DONE&&(b?b(a.response):console.log("error occurred with no errorCallback set."))};return a}var f={},p={},q=/^((?!chrome|android).)*safari/i.test(navigator.userAgent);navigator.userAgent.indexOf("Trident/7.0");var m="http://127.0.0.1:9100/";q&&"https:"===location.protocol&&(m="https://127.0.0.1:9101/");f.Device=function(a){var c=this;this.name=a.name;this.deviceType=a.deviceType;this.connection=a.connection;
 this.uid=a.uid;this.version=2;this.provider=a.provider;this.manufacturer=a.manufacturer;this.readRetries="bluetooth"===this.connection?1:0;this.sendErrorCallback=function(b){};this.sendFinishedCallback=function(b){};this.readErrorCallback=function(b){};this.readFinishedCallback=function(b){};this.send=function(b,a,l){var d=e("POST",m+"write");d&&(g(c,d,a,l),d.send(JSON.stringify({device:{name:this.name,uid:this.uid,connection:this.connection,deviceType:this.deviceType,version:this.version,provider:this.provider,
@@ -135,11 +158,10 @@ document.write("<p>");
 </script>
 
 <span style="padding-right:50px; font-size:200%">My Browser Print Test Page</span><br/>
-<span style="font-size:75%">This page must be loaded from a web server to function properly.</span><br><br>
 Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);></select> <!--  <input type="button" value="Change" onclick="changeDevice();">--> <br/><br/> 
 <input type="button" value="Get Application Configuration" onclick="getConfig()"><br/><br/>
 <input type="button" value="Send Config Label" onclick="writeToSelectedPrinter('~wc')"><br/><br/>
-<input type="button" value="Send ZPL Label" onclick="writeToSelectedPrinter('^XA^FO0,40^A0N36,36^FDThis is a test print^FS^FO0,0^A0N18,10^FDLine 2^FS^XZ')"><br/><br/>
+<input type="button" value="Send ZPL Label" onclick="writeToSelectedPrinter('^XA^FO20,20^A0N36,36^FDThis is a test print^FS^XZ')"><br/><br/>
 <input type="button" value="Get Status" onclick="writeToSelectedPrinter('~hs'); readFromSelectedPrinter()"><br/><br/>
 <input type="button" value="Get Local Devices" onclick="BrowserPrint.getLocalDevices(getDeviceCallback, errorCallback);"><br/><br/>
 <input type="text" name="write_text" id="write_text"><input type="button" value="Write" onclick="writeToSelectedPrinter(document.getElementById('write_text').value)"><br/><br/>
